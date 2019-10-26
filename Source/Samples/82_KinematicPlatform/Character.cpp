@@ -183,7 +183,7 @@ void Character::FixedPostUpdate(float timeStep)
         kinematicController_->GetTransform(kPos, kRot);
         Matrix3x4 matKC(kPos, kRot, Vector3::ONE);
 
-        // update position
+        // update
         matKC = delta * matKC;
         kinematicController_->SetTransform(matKC.Translation(), matKC.Rotation());
 
@@ -216,10 +216,6 @@ void Character::NodeOnMovingPlatform(Node *node)
     {
         return;
     }
-    Vector3 kPos;
-    Quaternion kRot;
-    kinematicController_->GetTransform(kPos, kRot);
-    Matrix3x4 matKC(kPos, kRot, Vector3::ONE);
 
     movingData_[0].node_ = node;
     movingData_[0].transform_ = node->GetWorldTransform();
